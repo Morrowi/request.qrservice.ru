@@ -40,7 +40,7 @@
               </div>
             </div>
             <div class="col-auto">
-              <button type="submit" class="bt"><span
+              <button type="submit" class="bt btn-auth"><span
                   v-show="loading"
                   class="spinner-border spinner-border-sm"
               ></span>Дальше</button>
@@ -201,3 +201,8 @@ export default {
 
 }
 </script>
+<style scoped>
+.btn-auth{
+  min-width: 261px;
+}
+</style>

@@ -1,6 +1,7 @@
 import { createWebHistory, createRouter } from "vue-router";
 import Home from "./components/Home.vue";
 import Main from "./components/Main.vue";
+import Result from "./components/Result.vue";
 // lazy-loaded
 
 const routes = [
@@ -14,6 +15,12 @@ const routes = [
     name: "Main",
     component: Main,
   },
+  {
+    path: "/result",
+    name: "Result",
+    component: Result,
+  }
+
 ];
 
 const router = createRouter({
@@ -22,9 +29,7 @@ const router = createRouter({
 });
 
 router.beforeEach((to, from, next) => {
-  console.log('to',to.path);
-  console.log(from);
-  console.log(next);
+
   const loggedIn = localStorage.getItem('user');
   if (!loggedIn) {
     next();

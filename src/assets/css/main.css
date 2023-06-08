@@ -16,7 +16,7 @@
 .row, .row > * { --bs-gutter-x: 1.25rem; }
 
 /* FONTS LOAD SECTION */
-
+@font-face { src: url("../fonts/NeueMachina-Regular.woff2") format("woff2"); font-family: "Neue Machina"; font-weight: 400; font-style: normal; }
 @font-face { src: url("../fonts/NeueMachina-Bold.woff2") format("woff2"); font-family: "Neue Machina"; font-weight: 700; font-style: normal; }
 @font-face { src: url("../fonts/NeueMachina-Black.woff2") format("woff2"); font-family: "Neue Machina"; font-weight: 900; font-style: normal; }
 
@@ -100,7 +100,7 @@ main{
 	z-index: 10;
 }
 .bg_green{
-	position: absolute;
+	position: fixed;
 	top: 291px;
 	z-index: 5;
 	width: 100%;
@@ -211,7 +211,7 @@ footer{
 	background: #FFFFFF;
 	border-radius: 6px;
 	border: 0;
-	line-height: 48px;
+	line-height: 59px;
 	font-weight: bold;
 	font-size: 18px;
 	color: #777777;
@@ -235,12 +235,13 @@ footer{
 	border-radius: 6px;
 	border: 0;
 	line-height: 48px;
-	font-weight: bold;
-	font-size: 18px;
+	font-weight: 700;
+	font-size: 21px;
 	color: #FFFFFF;
+	height: 62px;
 }
 .bt:hover{
-	background-color: #b2e03d;
+	background-color: #86a539;
 }
 .warp_contact-data{
 	margin-bottom: 30px;
@@ -433,11 +434,16 @@ footer{
 }
 
 .input-error{
-	color: red;
-	position: absolute;
-	bottom: -3px;
-	left: 15px;
+	font-weight: 400;
 	font-size: 12px;
+	line-height: 140%;
+	color: #FFFFFF;
+	position: absolute;
+	top: -8px;
+	right: 0;
+	background: #BE4242;
+	border-radius: 6px;
+	padding: 1px 5px;
 }
 
 .tarif_date{
@@ -510,7 +516,7 @@ footer{
 
 .buttonShowPass {
 	position: absolute;
-	top: 11px;
+	top: 14px;
 	right: 41px;
 	cursor: pointer;
 }
@@ -535,4 +541,100 @@ input::-webkit-inner-spin-button {
 	/* display: none; <- Crashes Chrome on hover */
 	-webkit-appearance: none;
 	margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+}
+
+.form_toggle {
+	display: flex;
+	margin-left: -5px;
+	margin-right: -5px;
+	overflow: hidden;
+}
+.form_toggle-item {
+	padding: 0 5px;
+	flex: 0 0 50%;
+	margin-bottom: 12px;
+}
+.form_toggle-item input[type=radio] {
+	display: none;
+}
+.item-1-col-3{
+	flex: 0 0 33%;
+}
+.item-1-col-4{
+	flex: 0 0 25%;
+}
+
+.form_toggle-item label {
+	background: #FFFFFF;
+	border-radius: 6px;
+	font-weight: 700;
+	font-size: 16px;
+	line-height: 140%;
+	width: 100%;
+	text-align: center;
+	color: #777777;
+	height: 60px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	cursor: pointer;
+}
+
+
+/* Checked */
+.form_toggle input[type=radio]:checked + label {
+	background: #9BBE42;
+	color: #ffffff;
+}
+
+.warp_statps_1 label.checkBlockWrap{
+	cursor: pointer;
+	margin-top: 16px;
+	margin-bottom: 24px;
+}
+
+.checkBlockWrap a {
+	color: #9BBE42;
+}
+.checkBlockWrap a:hover {
+	text-decoration: none;
+}
+.checkBloc {
+	width: 32px;
+	height: 32px;
+	border: 1px solid #777777;
+	border-radius: 6px;
+	background: #070B10;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	transition: all 0.3s;
+	margin-right: 16px;
+}
+.checkBloc svg path{
+	stroke: #070B10;
+}
+.checkBlockWrap input[type="checkbox"]:checked + .checkBloc{
+	border: 1px solid #FFFFFF;
+}
+.checkBlockWrap input[type="checkbox"]:checked + .checkBloc svg path{
+	stroke: #9BBE42;
+}
+
+.sub_text {
+	margin-top: 16px;
+	font-weight: 400;
+	font-size: 12px;
+	line-height: 140%;
+	text-align: center;
+	color: #777777;
+}
+
+.text_result{
+	font-weight: 400;
+	font-size: 21px;
+	line-height: 140%;
+	text-align: center;
+	color: #FFFFFF;
+	margin-bottom: 32px;
 }
