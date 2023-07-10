@@ -439,7 +439,7 @@ footer{
 	line-height: 140%;
 	color: #FFFFFF;
 	position: absolute;
-	top: -8px;
+	top: 16px;
 	right: 0;
 	background: #BE4242;
 	border-radius: 6px;
@@ -637,4 +637,31 @@ input::-webkit-inner-spin-button {
 	text-align: center;
 	color: #FFFFFF;
 	margin-bottom: 32px;
+}
+
+
+.help{
+	width: 20px;
+	height: 20px;
+	display: inline-flex;
+	justify-content: center;
+	align-items: center;
+	background-color: #9BBE42;
+	border-radius: 100px;
+	cursor: help;
+}
+
+
+.v-popper--theme-tooltip .v-popper__inner {
+	background-color: #fff;
+	max-width: 300px;
+}
+
+.v-popper--theme-tooltip .v-popper__arrow-outer {
+	border-color: #fff;
+}
+
+.v-popper--theme-tooltip .v-popper__inner{
+	color: #000;
+	box-shadow: 0px 0px 4px 1px rgba(0, 0, 0, 0.50);
 }
