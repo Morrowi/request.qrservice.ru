@@ -203,6 +203,6 @@ export default {
 </script>
 <style scoped>
 .btn-auth{
-  min-width: 261px;
+  min-width: 235px;
 }
 </style>

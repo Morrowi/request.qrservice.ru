@@ -12,6 +12,7 @@
         <Form @submit="onSubmit">
           <div class="row flex-column align-items-center warp_statps_1">
             <div class="col-12 position-relative">
+              <Field name="merchants.opf" type="hidden" v-model="opf" />
               <div class="form_toggle">
                 <div class="form_toggle-item item-1-col-3">
                   <input id="fid-0-1" type="radio" name="opf" v-model="opf" value="12300"  />
@@ -30,7 +31,7 @@
 
             <div class="col-12 position-relative">
               <label>ИНН</label>
-              <Field name="merchants.inn" type="number" placeholder="7812345678" class="input-control"  :rules="validateINN" />
+              <Field name="merchants.inn" type="number" placeholder="7812345678" v-maska data-maska="############" class="input-control"  :rules="validateINN" />
               <ErrorMessage class="input-error" name="merchants.inn" />
             </div>
             <div class="col-12 position-relative" v-if="opf !== '0'">
@@ -631,8 +632,12 @@ export default {
           this.loading=false;
           let data = response.data;
           if(data.success ==='ok'){
-
             this.$router.push("/main");
+          } else if (data.success === 'ERROR'){
+            if(data.texterror === 'Signature verification failed'){
+              this.$store.dispatch('auth/logout');
+              this.$router.push('/');
+            }
           }
         }).catch((error) => {
             console.log(error);
@@ -683,10 +688,8 @@ export default {
       return true;
     },
     validateINN(value) {
-      console.log(value);
-      return true;
 
-      /*if(value !== undefined){
+      if(value !== undefined){
         if( value.match(/[^0-9'".]/)){
           return 'ИНН должен состоять только из цифр';
         }
@@ -706,7 +709,7 @@ export default {
         return true;
       } else {
         return 'Поле не заполнено';
-      }*/
+      }
     },
     validateChekbox(value) {
       console.log(value);
@@ -728,11 +731,19 @@ export default {
         },
     ).then((response) => {
       console.log('response.data', response.data);
-      if(response.data === true){
-        this.$router.push("/result");
+      if(response.data.success === 'ok'){
+        if(response.data.next === true){
+          this.$router.push("/result");
+        }
+      } else if (response.data.success === 'ERROR'){
+        if(response.data.texterror === 'Signature verification failed'){
+          this.$store.dispatch('auth/logout');
+          this.$router.push('/');
+        }
       }
+
     }).catch((error) => {
-      console.log(error);
+      console.log('error', error);
     });
   },
 
